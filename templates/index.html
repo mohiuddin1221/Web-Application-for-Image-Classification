@@ -1,0 +1,35 @@
+## templates/index.html
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Image Classification App</title>
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>🖼️ Image Classification</h1>
+        <p>Upload an image and get prediction</p>
+
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <label class="upload-box">
+                <input type="file" name="image" accept="image/*" required />
+                <span>Click or Drag an Image</span>
+            </label>
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+            <h2>Result</h2>
+            <p><strong>Prediction:</strong> {{ prediction }}</p>
+            <p><strong>Confidence:</strong> {{ confidence }}%</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+```
+
